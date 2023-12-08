@@ -1,9 +1,10 @@
 {
   "name": "projeto-web-back-end",
   "version": "1.0.0",
-  "description": "Projeto final da disciplina de Prog. Web Back-end",
+  "description": "Projeto final da disciplina de Prog. Web Back-end, onde foi desenvolvido uma API para uma locadora de automóveis",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,6 +14,10 @@
   "author": "Edilson Pereira Nantes Junior e João Victor Guidorizi da Silva",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.2",
+    "sequelize": "^6.35.1",
+    "sqlite3": "^5.1.6"
   }
 }
