@@ -1,9 +1,11 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('./db'); // Crie um arquivo db.js para configurar a conexão com o SQLite
+const { v4: uuidv4 } = require('uuid');
+const sequelize = require('./db');
 
 const Category = sequelize.define('Category', {
   id: {
-    type: DataTypes.STRING,
+    type: DataTypes.UUIDV4,
+    defaultValue: () => uuidv4(),
     primaryKey: true,
     allowNull: false,
     unique: true,
@@ -15,12 +17,7 @@ const Category = sequelize.define('Category', {
   description: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
-    allowNull: false,
-  },
+  }
 });
 
 module.exports = Category;
