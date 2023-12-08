@@ -1,18 +1,24 @@
 const express = require('express');
-const sequelize = require('./models/db');
+const swaggerUi = require('swagger-ui-express');
 const bodyParser = require('body-parser');
+
+const sequelize = require('./models/db');
 const routes = require('./routes');
+const swaggerFile = require("./swagger.json");
 
 const app = express();
 const port = 3000;
-
-// Configurando o middleware para analisar o corpo das requisições como JSON
-app.use(bodyParser.json());
 
 // Sincronizar o modelo com o banco de dados
 sequelize.sync().then(() => {
     console.log('Banco de dados sincronizado');
 });
+
+// Configurando o middleware para analisar o corpo das requisições como JSON
+app.use(bodyParser.json());
+
+// Iniciando servidor de documentação
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 // Definindo as rotas
 app.use('/api', routes);
