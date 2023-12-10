@@ -6,6 +6,234 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create a new user",
+                "description": "Criação de um novo usuário",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "driver_license": {
+                                        "type": "string"
+                                    },
+                                    "admin": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "example": {
+                                    "name": "User's name sample",
+                                    "username": "username01",
+                                    "password": "Pass@123",
+                                    "driver_license": "13125467",
+                                    "admin": "true"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "username": {
+                                            "type": "string"
+                                        },
+                                        "password": {
+                                            "type": "string"
+                                        },
+                                        "driver_license": {
+                                            "type": "string"
+                                        },
+                                        "admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Users"],
+                "summary": "List all users",
+                "description": "Listagem de todos os usuários",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "username": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            },
+                                            "driver_license": {
+                                                "type": "string"
+                                            },
+                                            "admin": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/:id":{
+            "get": {
+                "tags": ["Users"],
+                "summary": "Get a user by id",
+                "description": "Busca um usuário pelo ID único",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "username": {
+                                            "type": "string"
+                                        },
+                                        "password": {
+                                            "type": "string"
+                                        },
+                                        "driver_license": {
+                                            "type": "string"
+                                        },
+                                        "admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Users"],
+                "summary": "Update a user",
+                "description": "Atualização dos dados de um usuário",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "driver_license": {
+                                        "type": "string"
+                                    },
+                                    "admin": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "example": {
+                                    "name": "User's name sample",
+                                    "username": "username01",
+                                    "password": "Pass@123",
+                                    "driver_license": "13125467",
+                                    "admin": "true"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "username": {
+                                            "type": "string"
+                                        },
+                                        "password": {
+                                            "type": "string"
+                                        },
+                                        "driver_license": {
+                                            "type": "string"
+                                        },
+                                        "admin": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Users"],
+                "summary": "Delete a user",
+                "description": "Deleta um usuário existente",
+                "responses": {
+                    "200": {
+                        "description": "Usuário excluído com sucesso"
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            }
+        },
         "/categories": {
             "post": {
                 "tags": ["Categories"],
