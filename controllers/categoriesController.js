@@ -15,7 +15,7 @@ const getCategoryById = async (req, res) => {
   try {
     const category = await Category.findByPk(categoryId);
     if (!category) {
-      return res.status(404).json({ error: 'Categoria não encontrada' });
+      return res.status(404).json({ error: 'Categoria não encontrada!' });
     }
     res.json(category);
   } catch (error) {
@@ -42,7 +42,7 @@ const updateCategory = async (req, res) => {
   try {
     const category = await Category.findByPk(categoryId);
     if (!category) {
-      return res.status(404).json({ error: 'Categoria não encontrada' });
+      return res.status(404).json({ error: 'Categoria não encontrada!' });
     }
 
     await category.update({ name, description });
@@ -58,11 +58,11 @@ const deleteCategory = async (req, res) => {
   try {
     const category = await Category.findByPk(categoryId);
     if (!category) {
-      return res.status(404).json({ error: 'Categoria não encontrada' });
+      return res.status(404).json({ error: 'Categoria não encontrada!' });
     }
 
     await category.destroy();
-    res.json({ message: 'Categoria excluída com sucesso' });
+    res.json({ message: 'Categoria excluída com sucesso!' });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
