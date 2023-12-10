@@ -30,7 +30,16 @@ const User = sequelize.define('User', {
   admin: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
-  }
+  },
+  created_at: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW,
+  },
 });
+// Adicione um hook para criptografar a senha antes de salvar no banco de dados
+User.beforeCreate((user) => {
+  user.password = bcrypt.hashSync(user.password, 10);
+});
+
 
 module.exports = User;
