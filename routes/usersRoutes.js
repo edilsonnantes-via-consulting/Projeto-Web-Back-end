@@ -1,40 +1,16 @@
-const { DataTypes } = require('sequelize');
-const { v4: uuidv4 } = require('uuid');
-const sequelize = require('./db');
+const express = require('express');
+const usersController = require('../controllers/usersController');
 
-const User = sequelize.define('User', {
-  id: {
-    type: DataTypes.UUIDV4,
-    defaultValue: () => uuidv4(),
-    primaryKey: true,
-    allowNull: false,
-    unique: true,
-  },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  driver_license: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  admin: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
-  },
-});
+const router = express.Router();
 
-module.exports = User;
+router.get('/', usersController.listUsers);
+
+router.get('/:id', usersController.getUserById);
+
+router.post('/', usersController.createNewUser);
+
+router.put('/:id', usersController.updateUserData);
+
+router.delete('/:id', usersController.deleteUser);
+
+module.exports = router;
