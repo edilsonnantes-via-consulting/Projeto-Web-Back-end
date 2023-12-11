@@ -1,12 +1,10 @@
 const { DataTypes } = require('sequelize');
 const { v4: uuidv4 } = require('uuid');
 const sequelize = require('./db');
-const Rental = require('./rentalModel');
-const Car = require('./carModel');
 
 const User = sequelize.define('User', {
   id: {
-    type: DataTypes.UUIDV4,
+    type: DataTypes.UUID,
     defaultValue: () => uuidv4(),
     primaryKey: true,
     allowNull: false,
@@ -32,17 +30,7 @@ const User = sequelize.define('User', {
   admin: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
-  },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
-  },
+  }
 });
-// Adicione um hook para criptografar a senha antes de salvar no banco de dados
-User.beforeCreate((user) => {
-  user.password = bcrypt.hashSync(user.password, 10);
-});
-
-User.belongsToMany(Car, {through: Rental, foreignKey: 'userId'});
 
 module.exports = User;

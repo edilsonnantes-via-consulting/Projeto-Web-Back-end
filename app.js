@@ -27,12 +27,3 @@ app.use('/', routes);
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
-
-app.use(cookieParser());
-app.use(
-  session({
-    secret: 'seuSegredoAqui', // Troque por uma string segura
-    resave: true,
-    saveUninitialized: true,
-  })
-);

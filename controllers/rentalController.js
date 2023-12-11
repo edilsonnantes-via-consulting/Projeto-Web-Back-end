@@ -98,5 +98,6 @@ module.exports = {
     listRental,
     getRentalById,
     createNewRental,
-    updateRental
+    updateRental,
+    deleteRental
 };

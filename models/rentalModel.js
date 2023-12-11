@@ -7,14 +7,14 @@ const Car = require('./carModel');
 
 const Rental = sequelize.define('Rental', {
     id: {
-        type: DataTypes.UUIDV4,
+        type: DataTypes.UUID,
         defaultValue: () => uuidv4(),
         primaryKey: true,
         allowNull: false,
         unique: true,
     },
     carId: {
-        type: DataTypes.UUIDV4,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
           model: Car,
@@ -22,7 +22,7 @@ const Rental = sequelize.define('Rental', {
         },
     },
     userId: {
-        type: DataTypes.UUIDV4,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
           model: User,
@@ -38,9 +38,12 @@ const Rental = sequelize.define('Rental', {
       allowNull: false
     },
     total: {
-      type:DataTypes.NUMBER,
+      type:DataTypes.DECIMAL,
       allowNull: false
     }
 });
+
+Rental.belongsTo(User, {foreignKey: 'userId'});
+Rental.belongsTo(Car, {foreignKey: 'carId'});
 
 module.exports = Rental;

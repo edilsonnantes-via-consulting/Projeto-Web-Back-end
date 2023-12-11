@@ -13,15 +13,17 @@ const authenticateUser = async (req, res) => {
       return res.status(401).json({ error: 'Credenciais inválidas' });
     }
 
-    // Gerar token JWT
     const token = jwt.sign({ userId: user.id }, 'seuSegredoAqui', {
-      expiresIn: '1h', // Define a expiração do token
+      expiresIn: '1h',
     });
 
-    // Armazenar o token no cookie
     res.cookie('token', token, { httpOnly: true });
     res.json({ message: 'Autenticação bem-sucedida', token });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
+module.exports = {
+  authenticateUser
+}
