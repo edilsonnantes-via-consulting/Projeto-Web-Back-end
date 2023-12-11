@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const sequelize = require('./models/db');
 const routes = require('./routes');
 const swaggerFile = require("./swagger.json");
+const installController = require('./controllers/installController');
 
 const app = express();
 const port = 3000;
@@ -18,7 +19,10 @@ sequelize.sync().then(() => {
 app.use(bodyParser.json());
 
 // Iniciando servidor de documentação
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
+// Instalando a aplicação
+app.use("/install", installController.install)
 
 // Definindo as rotas
 app.use('/', routes);
