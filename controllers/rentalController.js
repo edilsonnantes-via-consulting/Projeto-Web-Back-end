@@ -16,7 +16,7 @@ const getRentalById = async (req, res) => {
   try {
     const rental = await Rental.findByPk(rentalId);
     if (!rental) {
-      return res.status(404).json({ error: 'Categoria não encontrada!' });
+      return res.status(404).json({ error: 'Reserva não encontrada!' });
     }
     res.json(rental);
   } catch (error) {
@@ -28,6 +28,9 @@ const createNewRental = async (req, res) => {
   var { name, carId, userId, startDate, endDate } = req.body;
   
   const car = await Car.findByPk(carId);
+  if(!car){
+    return res.status(404).json({ error: 'Carro não encontrado!' });
+  }
 
   const startDateObj = new Date(startDate);
   const endDateObj = new Date(endDate);
@@ -49,10 +52,13 @@ const createNewRental = async (req, res) => {
 };
 
 const updateRental = async (req, res) => {
-  var { name, carId, userId, startDate, endDate } = req.body;
   const rentalId = req.params.id;
+  var { name, carId, userId, startDate, endDate } = req.body;
   
   const car = await Car.findByPk(carId);
+  if(!car){
+    return res.status(404).json({ error: 'Carro não encontrado!' });
+  }
 
   const startDateObj = new Date(startDate);
   const endDateObj = new Date(endDate);
@@ -66,7 +72,7 @@ const updateRental = async (req, res) => {
   try {
     const rental = await rental.findByPk(rentalId);
     if (!rental) {
-      return res.status(404).json({ error: 'Aluguel não encontrado!' });
+      return res.status(404).json({ error: 'Reserva não encontrado!' });
     }
     
     endDate = endDateObj;
@@ -84,11 +90,11 @@ const deleteRental = async (req, res) => {
   try {
     const rental = await Rental.findByPk(rentalId);
     if (!rental) {
-      return res.status(404).json({ error: 'Aluguel não encontrado!' });
+      return res.status(404).json({ error: 'Reserva não encontrado!' });
     }
 
     await rental.destroy();
-    res.json({ message: 'Aluguel excluído com sucesso!' });
+    res.json({ message: 'Reserva excluído com sucesso!' });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

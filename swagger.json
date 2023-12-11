@@ -401,6 +401,502 @@
                     }
                 }
             }
+        },
+        "/cars": {
+            "post": {
+                "tags": ["Cars"],
+                "summary": "Create a new car",
+                "description": "Criação de um novo carro",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "daily_rate": {
+                                        "type": "number"
+                                    },
+                                    "license_plate": {
+                                        "type": "string"
+                                    },
+                                    "categoryId": {
+                                        "type": "string"
+                                    },
+                                    "fine_amount": {
+                                        "type": "number"
+                                    },
+                                    "brand": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Astra",
+                                    "description": "Relampago marquinhos",
+                                    "daily_rate": 12.5,
+                                    "license_plate": "DGQ-9I43",
+                                    "categoryId": "495028c5-9849-42df-ab84-017e82d2f564",
+                                    "fine_amount": 22300,
+                                    "brand": "Chevrolet"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "daily_rate": {
+                                            "type": "number"
+                                        },
+                                        "license_plate": {
+                                            "type": "string"
+                                        },
+                                        "categoryId": {
+                                            "type": "string"
+                                        },
+                                        "fine_amount": {
+                                            "type": "number"
+                                        },
+                                        "brand": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Cars"],
+                "summary": "List all cars",
+                "description": "Listagem de todos os carros",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "daily_rate": {
+                                                "type": "number"
+                                            },
+                                            "license_plate": {
+                                                "type": "string"
+                                            },
+                                            "categoryId": {
+                                                "type": "string"
+                                            },
+                                            "fine_amount": {
+                                                "type": "number"
+                                            },
+                                            "brand": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cars/:id": {
+            "get": {
+                "tags": ["Cars"],
+                "summary": "Get a car by id",
+                "description": "Busca um carro pelo ID único",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "daily_rate": {
+                                            "type": "number"
+                                        },
+                                        "license_plate": {
+                                            "type": "string"
+                                        },
+                                        "categoryId": {
+                                            "type": "string"
+                                        },
+                                        "fine_amount": {
+                                            "type": "number"
+                                        },
+                                        "brand": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Carro não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Cars"],
+                "summary": "Update a car",
+                "description": "Atualização dos dados de um carro",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "daily_rate": {
+                                        "type": "number"
+                                    },
+                                    "license_plate": {
+                                        "type": "string"
+                                    },
+                                    "categoryId": {
+                                        "type": "string"
+                                    },
+                                    "fine_amount": {
+                                        "type": "number"
+                                    },
+                                    "brand": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Astra",
+                                    "description": "Relampago marquinhos",
+                                    "daily_rate": 12.5,
+                                    "license_plate": "DGQ-9I43",
+                                    "categoryId": "495028c5-9849-42df-ab84-017e82d2f564",
+                                    "fine_amount": 22300,
+                                    "brand": "Chevrolet"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "daily_rate": {
+                                            "type": "number"
+                                        },
+                                        "license_plate": {
+                                            "type": "string"
+                                        },
+                                        "categoryId": {
+                                            "type": "string"
+                                        },
+                                        "fine_amount": {
+                                            "type": "number"
+                                        },
+                                        "brand": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Carro não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Cars"],
+                "summary": "Delete a car",
+                "description": "Deleta um carro existente",
+                "responses": {
+                    "200": {
+                        "description": "Carro excluído com sucesso"
+                    },
+                    "404": {
+                        "description": "Carro não encontrado"
+                    }
+                }
+            }
+        },
+        "/rentals": {
+            "post": {
+                "tags": ["Rentals"],
+                "summary": "Create a new rental",
+                "description": "Criação de uma nova reserva",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "carId": {
+                                        "type": "string"
+                                    },
+                                    "userId": {
+                                        "type": "string"
+                                    },
+                                    "startDate": {
+                                        "type": "string"
+                                    },
+                                    "endDate": {
+                                        "type": "string"
+                                    },
+                                    "total": {
+                                        "type": "number"
+                                    }
+                                },
+                                "example": {
+                                    "carId": "ca6a5307-42b2-4289-9db9-acf073e09775",
+                                    "userId": "1ce0b5d0-72d7-414d-8409-a793d9a04a84",
+                                    "startDate": "2023-12-08T00:00:00.000Z",
+                                    "endDate": "2023-12-23T00:00:00.000Z",
+                                    "total": 187.5
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "carId": {
+                                            "type": "string"
+                                        },
+                                        "userId": {
+                                            "type": "string"
+                                        },
+                                        "startDate": {
+                                            "type": "string"
+                                        },
+                                        "endDate": {
+                                            "type": "string"
+                                        },
+                                        "total": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Rentals"],
+                "summary": "List all Rentals",
+                "description": "Listagem de todos as reservas",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "carId": {
+                                                "type": "string"
+                                            },
+                                            "userId": {
+                                                "type": "string"
+                                            },
+                                            "startDate": {
+                                                "type": "string"
+                                            },
+                                            "endDate": {
+                                                "type": "string"
+                                            },
+                                            "total": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/rentals/:id": {
+            "get": {
+                "tags": ["Rentals"],
+                "summary": "Get a rental by id",
+                "description": "Busca uma reserva pelo ID único",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "carId": {
+                                            "type": "string"
+                                        },
+                                        "userId": {
+                                            "type": "string"
+                                        },
+                                        "startDate": {
+                                            "type": "string"
+                                        },
+                                        "endDate": {
+                                            "type": "string"
+                                        },
+                                        "total": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Reserva não encontrada"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Rentals"],
+                "summary": "Update a Rental",
+                "description": "Atualização dos dados de uma reserva",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "carId": {
+                                        "type": "string"
+                                    },
+                                    "userId": {
+                                        "type": "string"
+                                    },
+                                    "startDate": {
+                                        "type": "string"
+                                    },
+                                    "endDate": {
+                                        "type": "string"
+                                    },
+                                    "total": {
+                                        "type": "number"
+                                    }
+                                },
+                                "example": {
+                                    "carId": "ca6a5307-42b2-4289-9db9-acf073e09775",
+                                    "userId": "1ce0b5d0-72d7-414d-8409-a793d9a04a84",
+                                    "startDate": "2023-12-08T00:00:00.000Z",
+                                    "endDate": "2023-12-23T00:00:00.000Z",
+                                    "total": 187.5
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "carId": {
+                                            "type": "string"
+                                        },
+                                        "userId": {
+                                            "type": "string"
+                                        },
+                                        "startDate": {
+                                            "type": "string"
+                                        },
+                                        "endDate": {
+                                            "type": "string"
+                                        },
+                                        "total": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Reserva não encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Rentals"],
+                "summary": "Delete a rental",
+                "description": "Deleta uma reserva existente",
+                "responses": {
+                    "200": {
+                        "description": "Reserva excluída com sucesso"
+                    },
+                    "404": {
+                        "description": "Reserva não encontrada"
+                    }
+                }
+            }
         }
     }
 }
