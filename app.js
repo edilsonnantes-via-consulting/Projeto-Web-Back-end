@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 // Definindo as rotas
-app.use('/api', routes);
+app.use('/', routes);
 
 // Iniciando o servidor
 app.listen(port, () => {

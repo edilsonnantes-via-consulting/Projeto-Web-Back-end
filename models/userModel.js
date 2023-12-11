@@ -1,6 +1,8 @@
 const { DataTypes } = require('sequelize');
 const { v4: uuidv4 } = require('uuid');
 const sequelize = require('./db');
+const Rental = require('./rentalModel');
+const Car = require('./carModel');
 
 const User = sequelize.define('User', {
   id: {
@@ -32,5 +34,7 @@ const User = sequelize.define('User', {
     defaultValue: false,
   }
 });
+
+User.belongsToMany(Car, {through: Rental, foreignKey: 'userId'});
 
 module.exports = User;
